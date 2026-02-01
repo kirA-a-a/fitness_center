@@ -384,29 +384,6 @@ fitness_center/
 └── README.md
 ```
 
-### IDE
-
-<details>
-<summary><b>Структура проекта в IntelliJ IDEA</b></summary>
-<p align="center">
-  <img src="docs/images/ide-project-structure.png" alt="Project Structure" width="400">
-</p>
-</details>
-
-<details>
-<summary><b>Конфигурация приложения</b></summary>
-<p align="center">
-  <img src="docs/images/ide-application-properties.png" alt="Application Properties" width="800">
-</p>
-</details>
-
-<details>
-<summary><b>База данных PostgreSQL</b></summary>
-<p align="center">
-  <img src="docs/images/ide-database-tables.png" alt="Database Tables" width="800">
-</p>
-</details>
-
 ---
 
 ## 🔭 Roadmap
