@@ -25,24 +25,73 @@ dependencies {
     // Spring Boot Starters
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    
-    // Thymeleaf Security Integration
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
     
     // PostgreSQL Driver
     runtimeOnly 'org.postgresql:postgresql'
 
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
     // Development Tools
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    
+
     // Testing
-    testImplementation 'com.codeborne:selenide:6.19.1'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'com.h2database:h2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.10.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'com.codeborne:selenide:7.9.2'
+    
+    // Video recording
+    testImplementation 'com.madgag:animated-gif-lib:1.4'
+    testImplementation 'org.jcodec:jcodec:0.2.5'
+    testImplementation 'org.jcodec:jcodec-javase:0.2.5'
+    testImplementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml'
+
+    // Allure
+    testImplementation platform('io.qameta.allure:allure-bom:2.25.0')
+    testImplementation 'io.qameta.allure:allure-junit5'
+    testImplementation 'io.qameta.allure:allure-selenide'
+
+    // AspectJ for @Step annotations
+    testImplementation 'org.aspectj:aspectjweaver:1.9.21'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+    
+    def resultsDir = layout.buildDirectory.dir("allure-results").get().asFile
+    systemProperty 'allure.results.directory', resultsDir.absolutePath
+    
+    // AspectJ weaver отключён - конфликтует со Spring CGLIB прокси
+    // Для @Step аннотаций можно использовать Allure.step() программно
+    // jvmArgs '-javaagent:' + configurations.testRuntimeClasspath.find { it.name.contains('aspectjweaver') }
+    
+    doFirst {
+        resultsDir.mkdirs()
+        // Копируем categories.json
+        def categoriesFile = file('src/test/resources/categories.json')
+        if (categoriesFile.exists()) {
+            java.nio.file.Files.copy(
+                categoriesFile.toPath(),
+                new File(resultsDir, 'categories.json').toPath(),
+                java.nio.file.StandardCopyOption.REPLACE_EXISTING
+            )
+        }
+        // Копируем environment.xml
+        def envFile = file('src/test/resources/environment.xml')
+        if (envFile.exists()) {
+            java.nio.file.Files.copy(
+                envFile.toPath(),
+                new File(resultsDir, 'environment.xml').toPath(),
+                java.nio.file.StandardCopyOption.REPLACE_EXISTING
+            )
+        }
+    }
 }

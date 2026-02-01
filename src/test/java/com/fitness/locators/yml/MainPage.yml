@@ -1,0 +1,70 @@
+# Локаторы главной страницы (index.html)
+
+# Навигация
+navbar: "[data-test-id='navbar']"
+navbarBrand: "[data-test-id='navbar-brand']"
+navbarToggler: "[data-test-id='navbar-toggler']"
+navbarNav: "[data-test-id='navbar-nav']"
+navLinkHome: "[data-test-id='nav-link-home']"
+navLinkAbout: "[data-test-id='nav-link-about']"
+navLinkContacts: "[data-test-id='nav-link-contacts']"
+
+# Hero секция
+heroSection: "[data-test-id='hero-section']"
+heroTitle: "[data-test-id='hero-title']"
+heroSubtitle: "[data-test-id='hero-subtitle']"
+heroDescription: "[data-test-id='hero-description']"
+
+# Features секция
+featuresSection: "[data-test-id='features-section']"
+featuresTitle: "[data-test-id='features-title']"
+featuresSubtitle: "[data-test-id='features-subtitle']"
+featureCardElements: "[data-test-id='feature-card-elements']"
+featureTitleElements: "[data-test-id='feature-title-elements']"
+featureDescriptionElements: "[data-test-id='feature-description-elements']"
+featureCardTrainers: "[data-test-id='feature-card-trainers']"
+featureTitleTrainers: "[data-test-id='feature-title-trainers']"
+featureDescriptionTrainers: "[data-test-id='feature-description-trainers']"
+featureCardLearning: "[data-test-id='feature-card-learning']"
+featureTitleLearning: "[data-test-id='feature-title-learning']"
+featureDescriptionLearning: "[data-test-id='feature-description-learning']"
+
+# Elements секция
+elementsSection: "[data-test-id='elements-section']"
+elementsTitle: "[data-test-id='elements-title']"
+elementsSubtitle: "[data-test-id='elements-subtitle']"
+exercisesContainer: "[data-test-id='exercises-container']"
+
+# Карточки упражнений
+exerciseLinkHandstand: "[data-test-id='exercise-link-handstand']"
+exerciseCardHandstand: "[data-test-id='exercise-card-handstand']"
+exerciseImageHandstand: "[data-test-id='exercise-image-handstand']"
+exerciseLabelHandstand: "[data-test-id='exercise-label-handstand']"
+
+exerciseLinkHandstandPushups: "[data-test-id='exercise-link-handstand-pushups']"
+exerciseCardHandstandPushups: "[data-test-id='exercise-card-handstand-pushups']"
+exerciseImageHandstandPushups: "[data-test-id='exercise-image-handstand-pushups']"
+exerciseLabelHandstandPushups: "[data-test-id='exercise-label-handstand-pushups']"
+
+exerciseLinkStraddlePlanche: "[data-test-id='exercise-link-straddle-planche']"
+exerciseCardStraddlePlanche: "[data-test-id='exercise-card-straddle-planche']"
+exerciseImageStraddlePlanche: "[data-test-id='exercise-image-straddle-planche']"
+exerciseLabelStraddlePlanche: "[data-test-id='exercise-label-straddle-planche']"
+
+exerciseLinkFullPlanche: "[data-test-id='exercise-link-full-planche']"
+exerciseCardFullPlanche: "[data-test-id='exercise-card-full-planche']"
+exerciseImageFullPlanche: "[data-test-id='exercise-image-full-planche']"
+exerciseLabelFullPlanche: "[data-test-id='exercise-label-full-planche']"
+
+exerciseLinkSpichag: "[data-test-id='exercise-link-spichag']"
+exerciseCardSpichag: "[data-test-id='exercise-card-spichag']"
+exerciseImageSpichag: "[data-test-id='exercise-image-spichag']"
+exerciseLabelSpichag: "[data-test-id='exercise-label-spichag']"
+
+# CTA секция
+ctaSection: "[data-test-id='cta-section']"
+ctaTitle: "[data-test-id='cta-title']"
+ctaDescription: "[data-test-id='cta-description']"
+ctaButton: "[data-test-id='cta-button']"# Footer
+footer: "[data-test-id='footer']"
+footerCopyright: "[data-test-id='footer-copyright']"

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<environment>
+    <parameter>
+        <key>Браузер</key>
+        <value>Chrome</value>
+    </parameter>
+    <parameter>
+        <key>Версия браузера</key>
+        <value>Latest</value>
+    </parameter>
+    <parameter>
+        <key>Операционная система</key>
+        <value>macOS</value>
+    </parameter>
+    <parameter>
+        <key>Версия Java</key>
+        <value>17</value>
+    </parameter>
+    <parameter>
+        <key>Версия Selenide</key>
+        <value>7.9.2</value>
+    </parameter>
+    <parameter>
+        <key>Версия Spring Boot</key>
+        <value>3.2.0</value>
+    </parameter>
+    <parameter>
+        <key>Базовый URL</key>
+        <value>http://localhost:8080</value>
+    </parameter>
+    <parameter>
+        <key>Окружение</key>
+        <value>Локальное</value>
+    </parameter>
+</environment>
