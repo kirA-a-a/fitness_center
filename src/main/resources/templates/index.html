@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гравитация нас не удержит - Фитнес-центр</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-bg: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .hero-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+        
+        .features-section {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .elements-preview {
+            padding: 80px 0;
+        }
+        
+        .exercise-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            overflow: hidden;
+            text-align: center;
+            width: 200px;
+        }
+        
+        .exercise-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .exercise-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .exercise-card-link:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .exercise-card .card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .exercise-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .exercise-card .card-label {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1rem;
+            padding: 15px;
+            margin: 0;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color) !important;
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark" data-test-id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/" data-test-id="navbar-brand">
+                <i class="bi bi-lightning-charge"></i> Гравитация нас не удержит
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" data-test-id="navbar-toggler">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" data-test-id="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/" data-test-id="nav-link-home">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about" data-test-id="nav-link-about">О нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contacts" data-test-id="nav-link-contacts">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный баннер -->
+    <section class="hero-section" data-test-id="hero-section">
+        <div class="container">
+            <h1 data-test-id="hero-title">Гравитация нас не удержит</h1>
+            <p class="lead" data-test-id="hero-subtitle">Фитнес-центр для тех, кто хочет покорить силу тяжести</p>
+            <p data-test-id="hero-description">Здесь мы учим не просто качать мышцы — мы учим летать (ну, почти)</p>
+        </div>
+    </section>
+
+    <!-- Особенности -->
+    <section class="features-section" data-test-id="features-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 mb-3" data-test-id="features-title">Почему выбирают нас</h2>
+                <p class="lead text-muted" data-test-id="features-subtitle">Специализация на сложных гимнастических элементах с собственным весом</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card text-center" data-test-id="feature-card-elements">
+                        <div class="feature-icon">
+                            <i class="bi bi-trophy"></i>
+                        </div>
+                        <h4 data-test-id="feature-title-elements">Сложные элементы</h4>
+                        <p data-test-id="feature-description-elements">Изучайте горизонт, флажок, стойку на руках и другие впечатляющие элементы, которые заставят друзей смотреть на вас с открытым ртом</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center" data-test-id="feature-card-trainers">
+                        <div class="feature-icon">
+                            <i class="bi bi-person-check"></i>
+                        </div>
+                        <h4 data-test-id="feature-title-trainers">Опытные тренеры</h4>
+                        <p data-test-id="feature-description-trainers">Наши тренеры помогут вам освоить технику выполнения каждого элемента с нуля до продвинутого уровня</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center" data-test-id="feature-card-learning">
+                        <div class="feature-icon">
+                            <i class="bi bi-book"></i>
+                        </div>
+                        <h4 data-test-id="feature-title-learning">Структурированное обучение</h4>
+                        <p data-test-id="feature-description-learning">Чёткая прогрессия от базовых упражнений к сложным элементам с подробными описаниями техники</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Элементы -->
+    <section class="elements-preview" data-test-id="elements-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 mb-3" data-test-id="elements-title">Изучаемые элементы</h2>
+                <p class="lead text-muted" data-test-id="elements-subtitle">Освойте сложные гимнастические элементы с собственным весом</p>
+            </div>
+            <div class="d-flex flex-wrap justify-content-center gap-4 mb-4" data-test-id="exercises-container">
+                <a href="/elements/handstand" class="exercise-card-link" data-test-id="exercise-link-handstand">
+                    <div class="exercise-card" data-test-id="exercise-card-handstand">
+                        <div class="card-image">
+                            <img src="/images/handstand.png" alt="Стойка на руках" data-test-id="exercise-image-handstand">
+                        </div>
+                        <div class="card-label" data-test-id="exercise-label-handstand">Стойка на руках</div>
+                    </div>
+                </a>
+                <a href="/elements/handstand-pushups" class="exercise-card-link" data-test-id="exercise-link-handstand-pushups">
+                    <div class="exercise-card" data-test-id="exercise-card-handstand-pushups">
+                        <div class="card-image">
+                            <img src="/images/handstand_pushups.png" alt="Отжимания в стойке на руках" data-test-id="exercise-image-handstand-pushups">
+                        </div>
+                        <div class="card-label" data-test-id="exercise-label-handstand-pushups">Отжимания в стойке на руках</div>
+                    </div>
+                </a>
+                <a href="/elements/straddle-planche" class="exercise-card-link" data-test-id="exercise-link-straddle-planche">
+                    <div class="exercise-card" data-test-id="exercise-card-straddle-planche">
+                        <div class="card-image">
+                            <img src="/images/straddle_planche.png" alt="Горизонт ноги врозь" data-test-id="exercise-image-straddle-planche">
+                        </div>
+                        <div class="card-label" data-test-id="exercise-label-straddle-planche">Горизонт ноги врозь</div>
+                    </div>
+                </a>
+                <a href="/elements/full-planche" class="exercise-card-link" data-test-id="exercise-link-full-planche">
+                    <div class="exercise-card" data-test-id="exercise-card-full-planche">
+                        <div class="card-image">
+                            <img src="/images/full_planche.png" alt="Горизонт ноги вместе" data-test-id="exercise-image-full-planche">
+                        </div>
+                        <div class="card-label" data-test-id="exercise-label-full-planche">Горизонт ноги вместе</div>
+                    </div>
+                </a>
+                <a href="/elements/spichag" class="exercise-card-link" data-test-id="exercise-link-spichag">
+                    <div class="exercise-card" data-test-id="exercise-card-spichag">
+                        <div class="card-image">
+                            <img src="/images/spichag.png" alt="Спичаг" data-test-id="exercise-image-spichag">
+                        </div>
+                        <div class="card-label" data-test-id="exercise-label-spichag">Спичаг</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Призыв к действию -->
+    <section class="cta-section" data-test-id="cta-section">
+        <div class="container">
+            <h2 class="display-4 mb-4" data-test-id="cta-title">Готовы начать?</h2>
+            <p class="lead mb-4" data-test-id="cta-description">Помни: гравитация — это не приговор, это просто вызов. А мы поможем его принять.</p>
+            <a href="/contacts" class="btn btn-light btn-lg" data-test-id="cta-button">
+                <i class="bi bi-envelope"></i> Связаться с нами
+            </a>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white text-center py-4" data-test-id="footer">
+        <div class="container">
+            <p class="mb-0" data-test-id="footer-copyright">&copy; 2026 Гравитация нас не удержит. Разработано с любовью к спорту и кодом.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

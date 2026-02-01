@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${exercise.name} + ' - Гравитация нас не удержит'">Элемент - Гравитация нас не удержит</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-bg: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .content-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .exercise-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .exercise-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .info-section {
+            margin-bottom: 40px;
+        }
+        
+        .info-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .info-section p,
+        .info-section .text-content {
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.1rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 0;
+            white-space: pre-line;
+        }
+        
+        .info-section ul {
+            line-height: 2;
+            color: #555;
+            font-size: 1.1rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color) !important;
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+        }
+        
+        .nav-link.active {
+            color: white !important;
+        }
+        
+        .back-link {
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+            transition: opacity 0.3s;
+        }
+        
+        .back-link:hover {
+            opacity: 0.8;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark" data-test-id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/" data-test-id="navbar-brand">
+                <i class="bi bi-lightning-charge"></i> Гравитация нас не удержит
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" data-test-id="navbar-toggler">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" data-test-id="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/" data-test-id="nav-link-home">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about" data-test-id="nav-link-about">О нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contacts" data-test-id="nav-link-contacts">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный баннер -->
+    <section class="hero-section" data-test-id="hero-section">
+        <div class="container">
+            <a href="/" class="back-link" data-test-id="back-link">
+                <i class="bi bi-arrow-left me-2"></i> Вернуться на главную
+            </a>
+            <h1 th:text="${exercise.name}" data-test-id="exercise-title">Название элемента</h1>
+        </div>
+    </section>
+
+    <!-- Контент -->
+    <section class="content-section" data-test-id="content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="exercise-card" data-test-id="exercise-card">
+                        <!-- Изображение -->
+                        <div class="text-center" th:if="${exercise.imagePath}" data-test-id="exercise-image-container">
+                            <img th:src="${exercise.imagePath}" 
+                                 th:alt="${exercise.name}" 
+                                 class="exercise-image"
+                                 data-test-id="exercise-image">
+                        </div>
+                        
+                        <!-- Описание -->
+                        <div class="info-section" th:if="${exercise.description}" data-test-id="section-description">
+                            <h3 data-test-id="section-title-description"><i class="bi bi-info-circle me-2"></i>Описание</h3>
+                            <p th:text="${exercise.description}" data-test-id="section-content-description">Описание элемента</p>
+                        </div>
+                        
+                        <!-- Техника выполнения -->
+                        <div class="info-section" th:if="${exercise.executionTechnique}" data-test-id="section-technique">
+                            <h3 data-test-id="section-title-technique"><i class="bi bi-gear me-2"></i>Техника выполнения</h3>
+                            <div class="text-content" th:text="${exercise.executionTechnique}" data-test-id="section-content-technique">Техника выполнения</div>
+                        </div>
+                        
+                        <!-- Прогрессия обучения -->
+                        <div class="info-section" th:if="${exercise.progression}" data-test-id="section-progression">
+                            <h3 data-test-id="section-title-progression"><i class="bi bi-graph-up me-2"></i>Прогрессия обучения</h3>
+                            <div class="text-content" th:text="${exercise.progression}" data-test-id="section-content-progression">Прогрессия обучения</div>
+                        </div>
+                        
+                        <!-- Задействованные мышечные группы -->
+                        <div class="info-section" th:if="${exercise.muscleGroups}" data-test-id="section-muscles">
+                            <h3 data-test-id="section-title-muscles"><i class="bi bi-heart-pulse me-2"></i>Задействованные мышечные группы</h3>
+                            <div class="text-content" th:text="${exercise.muscleGroups}" data-test-id="section-content-muscles">Мышечные группы</div>
+                        </div>
+                        
+                        <!-- Типичные ошибки -->
+                        <div class="info-section" th:if="${exercise.commonMistakes}" data-test-id="section-mistakes">
+                            <h3 data-test-id="section-title-mistakes"><i class="bi bi-exclamation-triangle me-2"></i>Типичные ошибки</h3>
+                            <div class="text-content" th:text="${exercise.commonMistakes}" data-test-id="section-content-mistakes">Типичные ошибки</div>
+                        </div>
+                        
+                        <!-- Советы по тренировкам -->
+                        <div class="info-section" th:if="${exercise.trainingTips}" data-test-id="section-tips">
+                            <h3 data-test-id="section-title-tips"><i class="bi bi-lightbulb me-2"></i>Советы по тренировкам</h3>
+                            <div class="text-content" th:text="${exercise.trainingTips}" data-test-id="section-content-tips">Советы по тренировкам</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white text-center py-4" data-test-id="footer">
+        <div class="container">
+            <p class="mb-0" data-test-id="footer-copyright">&copy; 2026 Гравитация нас не удержит. Разработано с любовью к спорту и кодом.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

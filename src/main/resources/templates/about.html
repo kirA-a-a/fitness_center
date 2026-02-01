@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас - Гравитация нас не удержит</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-bg: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .content-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .about-section {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .about-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color) !important;
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+        }
+        
+        .nav-link.active {
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark" data-test-id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/" data-test-id="navbar-brand">
+                <i class="bi bi-lightning-charge"></i> Гравитация нас не удержит
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" data-test-id="navbar-toggler">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" data-test-id="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/" data-test-id="nav-link-home">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/about" data-test-id="nav-link-about">О нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contacts" data-test-id="nav-link-contacts">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный баннер -->
+    <section class="hero-section" data-test-id="hero-section">
+        <div class="container">
+            <h1 data-test-id="hero-title">О нас</h1>
+            <p class="lead" data-test-id="hero-subtitle">Фитнес-центр для тех, кто хочет покорить силу тяжести</p>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section class="about-section" data-test-id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="about-card" data-test-id="about-card-mission">
+                        <div class="text-center">
+                            <div class="about-icon">
+                                <i class="bi bi-trophy"></i>
+                            </div>
+                            <h3 data-test-id="about-title-mission">Наша миссия</h3>
+                            <p data-test-id="about-description-mission">Мы помогаем людям преодолевать границы собственного тела, осваивая сложные гимнастические элементы с собственным весом. Наша цель — не просто накачать мышцы, а научить тело двигаться по-новому, покоряя силу тяжести.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="about-card" data-test-id="about-card-team">
+                        <div class="text-center">
+                            <div class="about-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h3 data-test-id="about-title-team">Наша команда</h3>
+                            <p data-test-id="about-description-team">Опытные тренеры с многолетним стажем в гимнастике и калистенике. Мы знаем, как безопасно и эффективно довести вас от базовых упражнений до сложных элементов вроде горизонта, стойки на руках и спичага.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="about-card" data-test-id="about-card-offers">
+                        <h3 class="text-center mb-4" data-test-id="about-title-offers">Что мы предлагаем</h3>
+                        <div class="row">
+                            <div class="col-md-4 text-center mb-4" data-test-id="offer-structured-learning">
+                                <i class="bi bi-book-half" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                                <h5 class="mt-3" data-test-id="offer-title-structured-learning">Структурированное обучение</h5>
+                                <p data-test-id="offer-description-structured-learning">Чёткая прогрессия от простого к сложному с подробными описаниями техники выполнения каждого элемента.</p>
+                            </div>
+                            <div class="col-md-4 text-center mb-4" data-test-id="offer-individual-approach">
+                                <i class="bi bi-person-check" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                                <h5 class="mt-3" data-test-id="offer-title-individual-approach">Индивидуальный подход</h5>
+                                <p data-test-id="offer-description-individual-approach">Каждый ученик получает персональное внимание и программу тренировок, адаптированную под его уровень подготовки.</p>
+                            </div>
+                            <div class="col-md-4 text-center mb-4" data-test-id="offer-safety">
+                                <i class="bi bi-shield-check" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                                <h5 class="mt-3" data-test-id="offer-title-safety">Безопасность</h5>
+                                <p data-test-id="offer-description-safety">Мы уделяем особое внимание правильной технике выполнения, чтобы избежать травм и достичь максимального результата.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Призыв к действию -->
+    <section class="content-section" data-test-id="cta-section">
+        <div class="container text-center">
+            <h2 class="display-4 mb-4" data-test-id="cta-title">Готовы начать?</h2>
+            <p class="lead mb-4" data-test-id="cta-description">Помни: гравитация — это не приговор, это просто вызов. А мы поможем его принять.</p>
+            <a href="/contacts" class="btn btn-primary btn-lg" data-test-id="cta-button">
+                <i class="bi bi-envelope"></i> Связаться с нами
+            </a>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white text-center py-4" data-test-id="footer">
+        <div class="container">
+            <p class="mb-0" data-test-id="footer-copyright">&copy; 2026 Гравитация нас не удержит. Разработано с любовью к спорту и кодом.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
