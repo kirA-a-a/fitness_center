@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Элемент не найден",
+    "description": "Локатор не нашёл элемент на странице",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*Element not found.*|.*ElementNotFound.*|.*not exist.*|.*does not exist.*"
+  },
+  {
+    "name": "Дефекты продукта",
+    "description": "Тест упал из-за несоответствия ожидаемого и фактического результата",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*should have.*|.*expected.*|.*Element should have.*"
+  },
+  {
+    "name": "Дефекты тестов",
+    "description": "Ошибка в коде теста или тестовых данных",
+    "matchedStatuses": ["broken"],
+    "messageRegex": ".*NullPointerException.*|.*IndexOutOfBoundsException.*|.*IllegalArgumentException.*"
+  },
+  {
+    "name": "Проблемы инфраструктуры",
+    "description": "Проблемы с окружением, сетью или браузером",
+    "matchedStatuses": ["broken"],
+    "messageRegex": ".*timeout.*|.*WebDriverException.*|.*connection.*|.*Session.*"
+  }
+]

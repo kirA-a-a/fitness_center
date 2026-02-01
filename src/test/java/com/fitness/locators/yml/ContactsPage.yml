@@ -1,0 +1,74 @@
+# Локаторы страницы "Контакты" (contacts.html)
+
+# Навигация
+navbar: "[data-test-id='navbar']"
+navbarBrand: "[data-test-id='navbar-brand']"
+navbarToggler: "[data-test-id='navbar-toggler']"
+navbarNav: "[data-test-id='navbar-nav']"
+navLinkHome: "[data-test-id='nav-link-home']"
+navLinkAbout: "[data-test-id='nav-link-about']"
+navLinkContacts: "[data-test-id='nav-link-contacts']"
+
+# Hero секция
+heroSection: "[data-test-id='hero-section']"
+heroTitle: "[data-test-id='hero-title']"
+heroSubtitle: "[data-test-id='hero-subtitle']"
+
+# Contacts секция
+contactsSection: "[data-test-id='contacts-section']"
+contactCardsContainer: "[data-test-id='contact-cards-container']"
+
+# Карточка адреса
+contactCardAddress: "[data-test-id='contact-card-address']"
+contactTitleAddress: "[data-test-id='contact-title-address']"
+contactInfoAddress: "[data-test-id='contact-info-address']"
+
+# Карточка телефона
+contactCardPhone: "[data-test-id='contact-card-phone']"
+contactTitlePhone: "[data-test-id='contact-title-phone']"
+contactInfoPhone: "[data-test-id='contact-info-phone']"
+
+# Карточка email
+contactCardEmail: "[data-test-id='contact-card-email']"
+contactTitleEmail: "[data-test-id='contact-title-email']"
+contactInfoEmail: "[data-test-id='contact-info-email']"
+
+# Форма обратной связи
+contactFormCard: "[data-test-id='contact-form-card']"
+contactFormTitle: "[data-test-id='contact-form-title']"
+contactForm: "[data-test-id='contact-form']"
+
+# Alert сообщения
+alertMessage: "[data-test-id='alert-message']"
+alertText: "[data-test-id='alert-text']"
+alertCloseButton: "[data-test-id='alert-close-button']"
+
+# Поле имени
+labelName: "[data-test-id='label-name']"
+inputName: "[data-test-id='input-name']"
+errorName: "[data-test-id='error-name']"
+
+# Поле email
+labelEmail: "[data-test-id='label-email']"
+inputEmail: "[data-test-id='input-email']"
+errorEmail: "[data-test-id='error-email']"
+
+# Поле телефона
+labelPhone: "[data-test-id='label-phone']"
+inputPhone: "[data-test-id='input-phone']"
+errorPhone: "[data-test-id='error-phone']"
+
+# Поле сообщения
+labelMessage: "[data-test-id='label-message']"
+inputMessage: "[data-test-id='input-message']"
+errorMessage: "[data-test-id='error-message']"
+messageCounterContainer: "[data-test-id='message-counter-container']"
+messageCounter: "[data-test-id='message-counter']"
+
+# Кнопка отправки
+submitButton: "[data-test-id='submit-button']"
+submitText: "[data-test-id='submit-text']"
+
+# Footer
+footer: "[data-test-id='footer']"
+footerCopyright: "[data-test-id='footer-copyright']"

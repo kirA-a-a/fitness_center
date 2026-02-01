@@ -107,3 +107,6 @@ logs/
 .env
 .env.local
 .env.*.local
+
+# Notes directory
+note/

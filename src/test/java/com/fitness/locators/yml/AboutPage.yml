@@ -1,0 +1,55 @@
+# Локаторы страницы "О нас" (about.html)
+
+# Навигация
+navbar: "[data-test-id='navbar']"
+navbarBrand: "[data-test-id='navbar-brand']"
+navbarToggler: "[data-test-id='navbar-toggler']"
+navbarNav: "[data-test-id='navbar-nav']"
+navLinkHome: "[data-test-id='nav-link-home']"
+navLinkAbout: "[data-test-id='nav-link-about']"
+navLinkContacts: "[data-test-id='nav-link-contacts']"
+
+# Hero секция
+heroSection: "[data-test-id='hero-section']"
+heroTitle: "[data-test-id='hero-title']"
+heroSubtitle: "[data-test-id='hero-subtitle']"
+
+# About секция
+aboutSection: "[data-test-id='about-section']"
+
+# Карточка миссии
+aboutCardMission: "[data-test-id='about-card-mission']"
+aboutTitleMission: "[data-test-id='about-title-mission']"
+aboutDescriptionMission: "[data-test-id='about-description-mission']"
+
+# Карточка команды
+aboutCardTeam: "[data-test-id='about-card-team']"
+aboutTitleTeam: "[data-test-id='about-title-team']"
+aboutDescriptionTeam: "[data-test-id='about-description-team']"
+
+# Карточка предложений
+aboutCardOffers: "[data-test-id='about-card-offers']"
+aboutTitleOffers: "[data-test-id='about-title-offers']"
+
+# Предложения
+offerStructuredLearning: "[data-test-id='offer-structured-learning']"
+offerTitleStructuredLearning: "[data-test-id='offer-title-structured-learning']"
+offerDescriptionStructuredLearning: "[data-test-id='offer-description-structured-learning']"
+
+offerIndividualApproach: "[data-test-id='offer-individual-approach']"
+offerTitleIndividualApproach: "[data-test-id='offer-title-individual-approach']"
+offerDescriptionIndividualApproach: "[data-test-id='offer-description-individual-approach']"
+
+offerSafety: "[data-test-id='offer-safety']"
+offerTitleSafety: "[data-test-id='offer-title-safety']"
+offerDescriptionSafety: "[data-test-id='offer-description-safety']"
+
+# CTA секция
+ctaSection: "[data-test-id='cta-section']"
+ctaTitle: "[data-test-id='cta-title']"
+ctaDescription: "[data-test-id='cta-description']"
+ctaButton: "[data-test-id='cta-button']"
+
+# Footer
+footer: "[data-test-id='footer']"
+footerCopyright: "[data-test-id='footer-copyright']"

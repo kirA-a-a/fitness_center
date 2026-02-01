@@ -1,0 +1,55 @@
+# Локаторы страницы детали упражнения (exercise-detail.html)
+
+# Навигация
+navbar: "[data-test-id='navbar']"
+navbarBrand: "[data-test-id='navbar-brand']"
+navbarToggler: "[data-test-id='navbar-toggler']"
+navbarNav: "[data-test-id='navbar-nav']"
+navLinkHome: "[data-test-id='nav-link-home']"
+navLinkAbout: "[data-test-id='nav-link-about']"
+navLinkContacts: "[data-test-id='nav-link-contacts']"
+
+# Hero секция
+heroSection: "[data-test-id='hero-section']"
+backLink: "[data-test-id='back-link']"
+exerciseTitle: "[data-test-id='exercise-title']"
+
+# Content секция
+contentSection: "[data-test-id='content-section']"
+exerciseCard: "[data-test-id='exercise-card']"
+exerciseImageContainer: "[data-test-id='exercise-image-container']"
+exerciseImage: "[data-test-id='exercise-image']"
+
+# Секция описания
+sectionDescription: "[data-test-id='section-description']"
+sectionTitleDescription: "[data-test-id='section-title-description']"
+sectionContentDescription: "[data-test-id='section-content-description']"
+
+# Секция техники выполнения
+sectionTechnique: "[data-test-id='section-technique']"
+sectionTitleTechnique: "[data-test-id='section-title-technique']"
+sectionContentTechnique: "[data-test-id='section-content-technique']"
+
+# Секция прогрессии
+sectionProgression: "[data-test-id='section-progression']"
+sectionTitleProgression: "[data-test-id='section-title-progression']"
+sectionContentProgression: "[data-test-id='section-content-progression']"
+
+# Секция мышечных групп
+sectionMuscles: "[data-test-id='section-muscles']"
+sectionTitleMuscles: "[data-test-id='section-title-muscles']"
+sectionContentMuscles: "[data-test-id='section-content-muscles']"
+
+# Секция типичных ошибок
+sectionMistakes: "[data-test-id='section-mistakes']"
+sectionTitleMistakes: "[data-test-id='section-title-mistakes']"
+sectionContentMistakes: "[data-test-id='section-content-mistakes']"
+
+# Секция советов
+sectionTips: "[data-test-id='section-tips']"
+sectionTitleTips: "[data-test-id='section-title-tips']"
+sectionContentTips: "[data-test-id='section-content-tips']"
+
+# Footer
+footer: "[data-test-id='footer']"
+footerCopyright: "[data-test-id='footer-copyright']"
