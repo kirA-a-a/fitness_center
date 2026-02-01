@@ -345,20 +345,20 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_DB: fitness_db
-      POSTGRES_USER: fitness
-      POSTGRES_PASSWORD: fitness
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
 ```
 
 ### Переменные окружения
 
-| Переменная | Значение по умолчанию | Описание |
-|------------|----------------------|----------|
-| `SPRING_DATASOURCE_URL` | `jdbc:postgresql://localhost:5432/fitness_db` | URL базы данных |
-| `SPRING_DATASOURCE_USERNAME` | `fitness` | Пользователь БД |
-| `SPRING_DATASOURCE_PASSWORD` | `fitness` | Пароль БД |
+| Переменная | Описание |
+|------------|----------|
+| `POSTGRES_DB` | Имя базы данных |
+| `POSTGRES_USER` | Пользователь БД |
+| `POSTGRES_PASSWORD` | Пароль БД |
 
 ---
 
