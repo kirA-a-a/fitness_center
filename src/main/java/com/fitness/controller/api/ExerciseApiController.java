@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/exercises")
@@ -27,7 +26,7 @@ public class ExerciseApiController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Exercise> getById(@PathVariable UUID id) {
+    public ResponseEntity<Exercise> getById(@PathVariable String id) {
         Optional<Exercise> exercise = exerciseRepository.findById(id);
         return exercise.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -47,7 +46,7 @@ public class ExerciseApiController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Exercise> update(@PathVariable UUID id, @RequestBody Exercise exercise) {
+    public ResponseEntity<Exercise> update(@PathVariable String id, @RequestBody Exercise exercise) {
         if (!exerciseRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
@@ -57,7 +56,7 @@ public class ExerciseApiController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         if (!exerciseRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }

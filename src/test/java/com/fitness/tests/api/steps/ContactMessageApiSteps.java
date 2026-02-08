@@ -10,7 +10,6 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.UUID;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -51,7 +50,7 @@ public class ContactMessageApiSteps {
         return this;
     }
 
-    public ContactMessageApiSteps getById(UUID id) {
+    public ContactMessageApiSteps getById(String id) {
         step("GET " + BASE_URL + "/" + id, () -> {
             Allure.addAttachment("HTTP запрос", "GET " + BASE_URL + "/" + id);
 
@@ -96,7 +95,7 @@ public class ContactMessageApiSteps {
         return this;
     }
 
-    public ContactMessageApiSteps update(UUID id, String name, String email, String phone, String message) {
+    public ContactMessageApiSteps update(String id, String name, String email, String phone, String message) {
         step("PUT " + BASE_URL + "/" + id, () -> {
             ContactMessage msg = new ContactMessage(name, email, phone, message);
 
@@ -122,7 +121,7 @@ public class ContactMessageApiSteps {
         return this;
     }
 
-    public ContactMessageApiSteps delete(UUID id) {
+    public ContactMessageApiSteps delete(String id) {
         step("DELETE " + BASE_URL + "/" + id, () -> {
             Allure.addAttachment("HTTP запрос", "DELETE " + BASE_URL + "/" + id);
 

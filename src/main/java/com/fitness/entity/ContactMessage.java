@@ -4,20 +4,16 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import org.hibernate.annotations.UuidGenerator;
-
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "contact_messages")
 public class ContactMessage {
 
     @Id
-    @GeneratedValue
-    @UuidGenerator(style = UuidGenerator.Style.RANDOM)
-    private UUID id;
-    
+    @Column(columnDefinition = "varchar(36) NOT NULL DEFAULT gen_random_uuid()::text", insertable = false)
+    private String id;
+
     @Column(nullable = false)
     @NotBlank(message = "Имя не может быть пустым")
     @Size(max = 100, message = "Имя не должно превышать 100 символов")
@@ -44,7 +40,9 @@ public class ContactMessage {
     
     @PrePersist
     protected void onCreate() {
-        createdAt = LocalDateTime.now();
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now();
+        }
     }
     
     // Конструкторы
@@ -59,11 +57,11 @@ public class ContactMessage {
     }
     
     // Getters and Setters
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
     

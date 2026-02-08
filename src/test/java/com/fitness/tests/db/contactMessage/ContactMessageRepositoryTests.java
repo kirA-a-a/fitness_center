@@ -11,7 +11,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.util.UUID;
 
 @DataJpaTest
 @ActiveProfiles("dbtest")
@@ -65,7 +64,7 @@ public class ContactMessageRepositoryTests {
                 .saveMessage("Exists", "e@test.com", "+3", "Test")
                 .existsById(messageSteps.getLastSavedMessage().getId())
                 .assertExists()
-                .existsById(UUID.randomUUID())
+                .existsById(java.util.UUID.randomUUID().toString())
                 .assertNotExists();
     }
 
@@ -79,7 +78,7 @@ public class ContactMessageRepositoryTests {
         messageSteps
                 .saveMessage("Delete", "d@test.com", "+4", "To delete");
 
-        UUID id = messageSteps.getLastSavedMessage().getId();
+        String id = messageSteps.getLastSavedMessage().getId();
 
         messageSteps
                 .deleteById(id)

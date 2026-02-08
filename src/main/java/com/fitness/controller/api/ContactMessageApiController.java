@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/messages")
@@ -28,7 +27,7 @@ public class ContactMessageApiController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ContactMessage> getById(@PathVariable UUID id) {
+    public ResponseEntity<ContactMessage> getById(@PathVariable String id) {
         Optional<ContactMessage> message = contactMessageRepository.findById(id);
         return message.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -36,12 +35,12 @@ public class ContactMessageApiController {
 
     @PostMapping
     public ResponseEntity<ContactMessage> create(@Valid @RequestBody ContactMessage contactMessage) {
-        ContactMessage saved = contactMessageRepository.save(contactMessage);
-        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+        contactMessageRepository.insertAndSetId(contactMessage);
+        return ResponseEntity.status(HttpStatus.CREATED).body(contactMessage);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ContactMessage> update(@PathVariable UUID id, @Valid @RequestBody ContactMessage contactMessage) {
+    public ResponseEntity<ContactMessage> update(@PathVariable String id, @Valid @RequestBody ContactMessage contactMessage) {
         if (!contactMessageRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
@@ -51,7 +50,7 @@ public class ContactMessageApiController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         if (!contactMessageRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
