@@ -7,6 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
+
 @DisplayName("API тесты сообщений")
 @Epic("API")
 @Feature("Сообщения")
@@ -44,7 +46,7 @@ public class ContactMessageApiTests {
         messageApi
                 .create("Get Test", "get@test.com", "+1", "Message");
 
-        Long id = messageApi.getLastBody().getId();
+        UUID id = messageApi.getLastBody().getId();
 
         messageApi
                 .getById(id)
@@ -76,7 +78,7 @@ public class ContactMessageApiTests {
         messageApi
                 .create("Before", "before@test.com", "+1", "Old");
 
-        Long id = messageApi.getLastBody().getId();
+        UUID id = messageApi.getLastBody().getId();
 
         messageApi
                 .update(id, "After", "after@test.com", "+2", "New")
@@ -94,7 +96,7 @@ public class ContactMessageApiTests {
         messageApi
                 .create("Delete", "delete@test.com", "+1", "To delete");
 
-        Long id = messageApi.getLastBody().getId();
+        UUID id = messageApi.getLastBody().getId();
 
         messageApi
                 .delete(id)
@@ -111,7 +113,7 @@ public class ContactMessageApiTests {
     @Tag("regression")
     void shouldReturn404ForNonExistentMessage() {
         messageApi
-                .getById(999999L)
+                .getById(UUID.randomUUID())
                 .assertStatusNotFound();
     }
 }

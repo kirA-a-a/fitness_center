@@ -10,6 +10,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.UUID;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -50,7 +51,7 @@ public class ExerciseApiSteps {
         return this;
     }
 
-    public ExerciseApiSteps getById(Long id) {
+    public ExerciseApiSteps getById(UUID id) {
         step("GET " + BASE_URL + "/" + id, () -> {
             Allure.addAttachment("HTTP запрос", "GET " + BASE_URL + "/" + id);
 
@@ -66,7 +67,7 @@ public class ExerciseApiSteps {
             if (lastResponse != null && lastResponse.getBody() != null) {
                 Exercise ex = lastResponse.getBody();
                 Allure.addAttachment("HTTP ответ", "application/json",
-                        String.format("{\"id\": %d, \"slug\": \"%s\", \"name\": \"%s\"}",
+                        String.format("{\"id\": \"%s\", \"slug\": \"%s\", \"name\": \"%s\"}",
                                 ex.getId(), ex.getSlug(), ex.getName()));
             }
         });
@@ -89,7 +90,7 @@ public class ExerciseApiSteps {
             if (lastResponse != null && lastResponse.getBody() != null) {
                 Exercise ex = lastResponse.getBody();
                 Allure.addAttachment("HTTP ответ", "application/json",
-                        String.format("{\"id\": %d, \"slug\": \"%s\", \"name\": \"%s\"}",
+                        String.format("{\"id\": \"%s\", \"slug\": \"%s\", \"name\": \"%s\"}",
                                 ex.getId(), ex.getSlug(), ex.getName()));
             }
         });
@@ -114,14 +115,14 @@ public class ExerciseApiSteps {
             if (lastResponse.getBody() != null) {
                 Exercise ex = lastResponse.getBody();
                 Allure.addAttachment("HTTP ответ", "application/json",
-                        String.format("{\"id\": %d, \"slug\": \"%s\", \"name\": \"%s\"}",
+                        String.format("{\"id\": \"%s\", \"slug\": \"%s\", \"name\": \"%s\"}",
                                 ex.getId(), ex.getSlug(), ex.getName()));
             }
         });
         return this;
     }
 
-    public ExerciseApiSteps update(Long id, String slug, String name, String description) {
+    public ExerciseApiSteps update(UUID id, String slug, String name, String description) {
         step("PUT " + BASE_URL + "/" + id, () -> {
             Exercise exercise = new Exercise();
             exercise.setSlug(slug);
@@ -129,7 +130,7 @@ public class ExerciseApiSteps {
             exercise.setDescription(description);
 
             Allure.addAttachment("HTTP запрос", "application/json",
-                    String.format("PUT %s/%d\n{\"slug\": \"%s\", \"name\": \"%s\"}",
+                    String.format("PUT %s/%s\n{\"slug\": \"%s\", \"name\": \"%s\"}",
                             BASE_URL, id, slug, name));
 
             try {
@@ -150,7 +151,7 @@ public class ExerciseApiSteps {
         return this;
     }
 
-    public ExerciseApiSteps delete(Long id) {
+    public ExerciseApiSteps delete(UUID id) {
         step("DELETE " + BASE_URL + "/" + id, () -> {
             Allure.addAttachment("HTTP запрос", "DELETE " + BASE_URL + "/" + id);
 

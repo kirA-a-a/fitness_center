@@ -10,6 +10,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.UUID;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -50,7 +51,7 @@ public class ContactMessageApiSteps {
         return this;
     }
 
-    public ContactMessageApiSteps getById(Long id) {
+    public ContactMessageApiSteps getById(UUID id) {
         step("GET " + BASE_URL + "/" + id, () -> {
             Allure.addAttachment("HTTP запрос", "GET " + BASE_URL + "/" + id);
 
@@ -66,7 +67,7 @@ public class ContactMessageApiSteps {
             if (lastResponse != null && lastResponse.getBody() != null) {
                 ContactMessage msg = lastResponse.getBody();
                 Allure.addAttachment("HTTP ответ", "application/json",
-                        String.format("{\"id\": %d, \"name\": \"%s\", \"email\": \"%s\"}",
+                        String.format("{\"id\": \"%s\", \"name\": \"%s\", \"email\": \"%s\"}",
                                 msg.getId(), msg.getName(), msg.getEmail()));
             }
         });
@@ -88,19 +89,19 @@ public class ContactMessageApiSteps {
             if (lastResponse.getBody() != null) {
                 ContactMessage resp = lastResponse.getBody();
                 Allure.addAttachment("HTTP ответ", "application/json",
-                        String.format("{\"id\": %d, \"name\": \"%s\", \"email\": \"%s\"}",
+                        String.format("{\"id\": \"%s\", \"name\": \"%s\", \"email\": \"%s\"}",
                                 resp.getId(), resp.getName(), resp.getEmail()));
             }
         });
         return this;
     }
 
-    public ContactMessageApiSteps update(Long id, String name, String email, String phone, String message) {
+    public ContactMessageApiSteps update(UUID id, String name, String email, String phone, String message) {
         step("PUT " + BASE_URL + "/" + id, () -> {
             ContactMessage msg = new ContactMessage(name, email, phone, message);
 
             Allure.addAttachment("HTTP запрос", "application/json",
-                    String.format("PUT %s/%d\n{\"name\": \"%s\", \"email\": \"%s\"}",
+                    String.format("PUT %s/%s\n{\"name\": \"%s\", \"email\": \"%s\"}",
                             BASE_URL, id, name, email));
 
             try {
@@ -121,7 +122,7 @@ public class ContactMessageApiSteps {
         return this;
     }
 
-    public ContactMessageApiSteps delete(Long id) {
+    public ContactMessageApiSteps delete(UUID id) {
         step("DELETE " + BASE_URL + "/" + id, () -> {
             Allure.addAttachment("HTTP запрос", "DELETE " + BASE_URL + "/" + id);
 
