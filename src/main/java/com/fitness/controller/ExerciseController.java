@@ -19,8 +19,11 @@ public class ExerciseController {
     @GetMapping("/elements/{slug}")
     public String showExercise(@PathVariable String slug, Model model) {
         Optional<Exercise> exerciseOpt = exerciseRepository.findBySlug(slug);
-        Exercise exercise = exerciseOpt.get();
-        model.addAttribute("exercise", exercise);
+        if (exerciseOpt.isEmpty()) {
+            return "redirect:/";
+        }
+        model.addAttribute("exercise", exerciseOpt.get());
+        model.addAttribute("allExercises", exerciseRepository.findAll());
         return "exercise-detail";
     }
 }
