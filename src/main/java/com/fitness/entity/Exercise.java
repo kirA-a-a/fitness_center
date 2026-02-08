@@ -1,19 +1,22 @@
 package com.fitness.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.UuidGenerator;
-
-import java.util.UUID;
 
 @Entity
 @Table(name = "exercises")
 public class Exercise {
 
     @Id
-    @GeneratedValue
-    @UuidGenerator(style = UuidGenerator.Style.RANDOM)
-    private UUID id;
-    
+    @Column(columnDefinition = "varchar(36) NOT NULL DEFAULT gen_random_uuid()::text")
+    private String id;
+
+    @PrePersist
+    protected void onCreate() {
+        if (id == null) {
+            id = java.util.UUID.randomUUID().toString();
+        }
+    }
+
     @Column(nullable = false, unique = true)
     private String slug;
     
@@ -46,11 +49,11 @@ public class Exercise {
     }
     
     // Getters and Setters
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
     

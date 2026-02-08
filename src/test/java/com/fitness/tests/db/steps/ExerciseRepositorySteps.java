@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -52,7 +51,7 @@ public class ExerciseRepositorySteps {
         return this;
     }
 
-    public ExerciseRepositorySteps findById(UUID id) {
+    public ExerciseRepositorySteps findById(String id) {
         step("Ищем упражнение по ID: " + id, () -> {
             String sql = String.format("SELECT * FROM %s WHERE id = '%s'", TABLE_NAME, id);
             Allure.addAttachment("SQL запрос", "text/plain", sql);
@@ -110,7 +109,7 @@ public class ExerciseRepositorySteps {
         return this;
     }
 
-    public ExerciseRepositorySteps existsById(UUID id) {
+    public ExerciseRepositorySteps existsById(String id) {
         step("Проверяем существование упражнения с ID: " + id, () -> {
             String sql = String.format("SELECT COUNT(*) FROM %s WHERE id = '%s'", TABLE_NAME, id);
             Allure.addAttachment("SQL запрос", "text/plain", sql);
@@ -123,7 +122,7 @@ public class ExerciseRepositorySteps {
         return this;
     }
 
-    public ExerciseRepositorySteps deleteById(UUID id) {
+    public ExerciseRepositorySteps deleteById(String id) {
         step("Удаляем упражнение с ID: " + id, () -> {
             String sql = String.format("DELETE FROM %s WHERE id = '%s'", TABLE_NAME, id);
             Allure.addAttachment("SQL запрос", "text/plain", sql);

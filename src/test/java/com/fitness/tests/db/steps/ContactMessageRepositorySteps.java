@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -49,7 +48,7 @@ public class ContactMessageRepositorySteps {
         return this;
     }
 
-    public ContactMessageRepositorySteps findById(UUID id) {
+    public ContactMessageRepositorySteps findById(String id) {
         step("Ищем сообщение по ID: " + id, () -> {
             String sql = String.format("SELECT * FROM %s WHERE id = '%s'", TABLE_NAME, id);
             Allure.addAttachment("SQL запрос", "text/plain", sql);
@@ -88,7 +87,7 @@ public class ContactMessageRepositorySteps {
         return this;
     }
 
-    public ContactMessageRepositorySteps existsById(UUID id) {
+    public ContactMessageRepositorySteps existsById(String id) {
         step("Проверяем существование сообщения с ID: " + id, () -> {
             String sql = String.format("SELECT COUNT(*) FROM %s WHERE id = '%s'", TABLE_NAME, id);
             Allure.addAttachment("SQL запрос", "text/plain", sql);
@@ -101,7 +100,7 @@ public class ContactMessageRepositorySteps {
         return this;
     }
 
-    public ContactMessageRepositorySteps deleteById(UUID id) {
+    public ContactMessageRepositorySteps deleteById(String id) {
         step("Удаляем сообщение с ID: " + id, () -> {
             String sql = String.format("DELETE FROM %s WHERE id = '%s'", TABLE_NAME, id);
             Allure.addAttachment("SQL запрос", "text/plain", sql);

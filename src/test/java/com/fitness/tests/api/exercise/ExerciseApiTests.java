@@ -48,7 +48,7 @@ public class ExerciseApiTests {
         exerciseApi
                 .create("get-by-id-" + testId, "Get By ID", null);
 
-        UUID id = exerciseApi.getLastBody().getId();
+        String id = exerciseApi.getLastBody().getId();
 
         exerciseApi
                 .getById(id)
@@ -96,7 +96,7 @@ public class ExerciseApiTests {
         exerciseApi
                 .create(slug, "Before Update", null);
 
-        UUID id = exerciseApi.getLastBody().getId();
+        String id = exerciseApi.getLastBody().getId();
 
         exerciseApi
                 .update(id, slug, "After Update", "Новое описание")
@@ -114,7 +114,7 @@ public class ExerciseApiTests {
         exerciseApi
                 .create("delete-test-" + testId, "To Delete", null);
 
-        UUID id = exerciseApi.getLastBody().getId();
+        String id = exerciseApi.getLastBody().getId();
 
         exerciseApi
                 .delete(id)
@@ -131,7 +131,7 @@ public class ExerciseApiTests {
     @Tag("regression")
     void shouldReturn404ForNonExistentExercise() {
         exerciseApi
-                .getById(UUID.randomUUID())
+                .getById(java.util.UUID.randomUUID().toString())
                 .assertStatusNotFound();
     }
 }

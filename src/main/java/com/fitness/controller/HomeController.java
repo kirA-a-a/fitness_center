@@ -47,7 +47,11 @@ public class HomeController {
             return "contacts";
         }
         
-        contactMessageRepository.save(contactMessage);
+        if (contactMessage.getId() == null) {
+            contactMessageRepository.insertAndSetId(contactMessage);
+        } else {
+            contactMessageRepository.save(contactMessage);
+        }
         redirectAttributes.addFlashAttribute("success", true);
         redirectAttributes.addFlashAttribute("message", "Спасибо! Ваше сообщение успешно отправлено.");
         
@@ -70,7 +74,11 @@ public class HomeController {
             return ResponseEntity.badRequest().body(response);
         }
         
-        contactMessageRepository.save(contactMessage);
+        if (contactMessage.getId() == null) {
+            contactMessageRepository.insertAndSetId(contactMessage);
+        } else {
+            contactMessageRepository.save(contactMessage);
+        }
         response.put("success", true);
         response.put("message", "Спасибо! Ваше сообщение успешно отправлено.");
         

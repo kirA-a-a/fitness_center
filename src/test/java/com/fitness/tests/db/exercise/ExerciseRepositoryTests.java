@@ -11,7 +11,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.util.UUID;
 
 @DataJpaTest
 @ActiveProfiles("dbtest")
@@ -79,7 +78,7 @@ public class ExerciseRepositoryTests {
                 .saveExercise("exists-test", "Exists Test", null)
                 .existsById(exerciseSteps.getLastSavedExercise().getId())
                 .assertExists()
-                .existsById(UUID.randomUUID())
+                .existsById(java.util.UUID.randomUUID().toString())
                 .assertNotExists();
     }
 
@@ -93,7 +92,7 @@ public class ExerciseRepositoryTests {
         exerciseSteps
                 .saveExercise("to-delete", "Для удаления", null);
 
-        UUID id = exerciseSteps.getLastSavedExercise().getId();
+        String id = exerciseSteps.getLastSavedExercise().getId();
 
         exerciseSteps
                 .deleteById(id)

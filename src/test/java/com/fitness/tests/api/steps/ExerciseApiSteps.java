@@ -10,7 +10,6 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.UUID;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -51,7 +50,7 @@ public class ExerciseApiSteps {
         return this;
     }
 
-    public ExerciseApiSteps getById(UUID id) {
+    public ExerciseApiSteps getById(String id) {
         step("GET " + BASE_URL + "/" + id, () -> {
             Allure.addAttachment("HTTP запрос", "GET " + BASE_URL + "/" + id);
 
@@ -122,7 +121,7 @@ public class ExerciseApiSteps {
         return this;
     }
 
-    public ExerciseApiSteps update(UUID id, String slug, String name, String description) {
+    public ExerciseApiSteps update(String id, String slug, String name, String description) {
         step("PUT " + BASE_URL + "/" + id, () -> {
             Exercise exercise = new Exercise();
             exercise.setSlug(slug);
@@ -151,7 +150,7 @@ public class ExerciseApiSteps {
         return this;
     }
 
-    public ExerciseApiSteps delete(UUID id) {
+    public ExerciseApiSteps delete(String id) {
         step("DELETE " + BASE_URL + "/" + id, () -> {
             Allure.addAttachment("HTTP запрос", "DELETE " + BASE_URL + "/" + id);
 
