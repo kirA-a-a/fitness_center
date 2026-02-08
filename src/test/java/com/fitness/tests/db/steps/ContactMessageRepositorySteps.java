@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,15 +43,15 @@ public class ContactMessageRepositorySteps {
 
             lastSavedMessage = contactMessageRepository.save(msg);
 
-            String response = String.format("Inserted 1 row. Generated ID: %d", lastSavedMessage.getId());
+            String response = String.format("Inserted 1 row. Generated ID: %s", lastSavedMessage.getId());
             Allure.addAttachment("SQL ответ", "text/plain", response);
         });
         return this;
     }
 
-    public ContactMessageRepositorySteps findById(Long id) {
+    public ContactMessageRepositorySteps findById(UUID id) {
         step("Ищем сообщение по ID: " + id, () -> {
-            String sql = String.format("SELECT * FROM %s WHERE id = %d", TABLE_NAME, id);
+            String sql = String.format("SELECT * FROM %s WHERE id = '%s'", TABLE_NAME, id);
             Allure.addAttachment("SQL запрос", "text/plain", sql);
 
             lastFoundMessage = contactMessageRepository.findById(id);
@@ -58,7 +59,7 @@ public class ContactMessageRepositorySteps {
             if (lastFoundMessage.isPresent()) {
                 ContactMessage msg = lastFoundMessage.get();
                 String response = String.format(
-                        "| id | name | email | phone |\n|----|------|-------|-------|\n| %d | %s | %s | %s |",
+                        "| id | name | email | phone |\n|----|------|-------|-------|\n| %s | %s | %s | %s |",
                         msg.getId(), msg.getName(), msg.getEmail(), msg.getPhone());
                 Allure.addAttachment("SQL ответ", "text/plain", response);
             } else {
@@ -78,7 +79,7 @@ public class ContactMessageRepositorySteps {
             StringBuilder response = new StringBuilder();
             response.append("| id | name | email | phone |\n|----|------|-------|-------|\n");
             for (ContactMessage msg : lastFoundMessages) {
-                response.append(String.format("| %d | %s | %s | %s |\n",
+                response.append(String.format("| %s | %s | %s | %s |\n",
                         msg.getId(), msg.getName(), msg.getEmail(), msg.getPhone()));
             }
             response.append("\nTotal: ").append(lastFoundMessages.size()).append(" rows");
@@ -87,9 +88,9 @@ public class ContactMessageRepositorySteps {
         return this;
     }
 
-    public ContactMessageRepositorySteps existsById(Long id) {
+    public ContactMessageRepositorySteps existsById(UUID id) {
         step("Проверяем существование сообщения с ID: " + id, () -> {
-            String sql = String.format("SELECT COUNT(*) FROM %s WHERE id = %d", TABLE_NAME, id);
+            String sql = String.format("SELECT COUNT(*) FROM %s WHERE id = '%s'", TABLE_NAME, id);
             Allure.addAttachment("SQL запрос", "text/plain", sql);
 
             lastExistsResult = contactMessageRepository.existsById(id);
@@ -100,9 +101,9 @@ public class ContactMessageRepositorySteps {
         return this;
     }
 
-    public ContactMessageRepositorySteps deleteById(Long id) {
+    public ContactMessageRepositorySteps deleteById(UUID id) {
         step("Удаляем сообщение с ID: " + id, () -> {
-            String sql = String.format("DELETE FROM %s WHERE id = %d", TABLE_NAME, id);
+            String sql = String.format("DELETE FROM %s WHERE id = '%s'", TABLE_NAME, id);
             Allure.addAttachment("SQL запрос", "text/plain", sql);
 
             contactMessageRepository.deleteById(id);

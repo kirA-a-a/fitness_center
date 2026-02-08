@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,15 +46,15 @@ public class ExerciseRepositorySteps {
 
             lastSavedExercise = exerciseRepository.save(exercise);
 
-            String response = String.format("Inserted 1 row. Generated ID: %d", lastSavedExercise.getId());
+            String response = String.format("Inserted 1 row. Generated ID: %s", lastSavedExercise.getId());
             Allure.addAttachment("SQL ответ", "text/plain", response);
         });
         return this;
     }
 
-    public ExerciseRepositorySteps findById(Long id) {
+    public ExerciseRepositorySteps findById(UUID id) {
         step("Ищем упражнение по ID: " + id, () -> {
-            String sql = String.format("SELECT * FROM %s WHERE id = %d", TABLE_NAME, id);
+            String sql = String.format("SELECT * FROM %s WHERE id = '%s'", TABLE_NAME, id);
             Allure.addAttachment("SQL запрос", "text/plain", sql);
 
             lastFoundExercise = exerciseRepository.findById(id);
@@ -61,7 +62,7 @@ public class ExerciseRepositorySteps {
             if (lastFoundExercise.isPresent()) {
                 Exercise ex = lastFoundExercise.get();
                 String response = String.format(
-                        "| id | slug | name |\n|----|------|------|\n| %d | %s | %s |",
+                        "| id | slug | name |\n|----|------|------|\n| %s | %s | %s |",
                         ex.getId(), ex.getSlug(), ex.getName());
                 Allure.addAttachment("SQL ответ", "text/plain", response);
             } else {
@@ -81,7 +82,7 @@ public class ExerciseRepositorySteps {
             if (lastFoundExercise.isPresent()) {
                 Exercise ex = lastFoundExercise.get();
                 String response = String.format(
-                        "| id | slug | name |\n|----|------|------|\n| %d | %s | %s |",
+                        "| id | slug | name |\n|----|------|------|\n| %s | %s | %s |",
                         ex.getId(), ex.getSlug(), ex.getName());
                 Allure.addAttachment("SQL ответ", "text/plain", response);
             } else {
@@ -101,7 +102,7 @@ public class ExerciseRepositorySteps {
             StringBuilder response = new StringBuilder();
             response.append("| id | slug | name |\n|----|------|------|\n");
             for (Exercise ex : lastFoundExercises) {
-                response.append(String.format("| %d | %s | %s |\n", ex.getId(), ex.getSlug(), ex.getName()));
+                response.append(String.format("| %s | %s | %s |\n", ex.getId(), ex.getSlug(), ex.getName()));
             }
             response.append("\nTotal: ").append(lastFoundExercises.size()).append(" rows");
             Allure.addAttachment("SQL ответ", "text/plain", response.toString());
@@ -109,9 +110,9 @@ public class ExerciseRepositorySteps {
         return this;
     }
 
-    public ExerciseRepositorySteps existsById(Long id) {
+    public ExerciseRepositorySteps existsById(UUID id) {
         step("Проверяем существование упражнения с ID: " + id, () -> {
-            String sql = String.format("SELECT COUNT(*) FROM %s WHERE id = %d", TABLE_NAME, id);
+            String sql = String.format("SELECT COUNT(*) FROM %s WHERE id = '%s'", TABLE_NAME, id);
             Allure.addAttachment("SQL запрос", "text/plain", sql);
 
             lastExistsResult = exerciseRepository.existsById(id);
@@ -122,9 +123,9 @@ public class ExerciseRepositorySteps {
         return this;
     }
 
-    public ExerciseRepositorySteps deleteById(Long id) {
+    public ExerciseRepositorySteps deleteById(UUID id) {
         step("Удаляем упражнение с ID: " + id, () -> {
-            String sql = String.format("DELETE FROM %s WHERE id = %d", TABLE_NAME, id);
+            String sql = String.format("DELETE FROM %s WHERE id = '%s'", TABLE_NAME, id);
             Allure.addAttachment("SQL запрос", "text/plain", sql);
 
             exerciseRepository.deleteById(id);

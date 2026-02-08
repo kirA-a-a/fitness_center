@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/messages")
@@ -27,7 +28,7 @@ public class ContactMessageApiController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ContactMessage> getById(@PathVariable Long id) {
+    public ResponseEntity<ContactMessage> getById(@PathVariable UUID id) {
         Optional<ContactMessage> message = contactMessageRepository.findById(id);
         return message.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -40,7 +41,7 @@ public class ContactMessageApiController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ContactMessage> update(@PathVariable Long id, @Valid @RequestBody ContactMessage contactMessage) {
+    public ResponseEntity<ContactMessage> update(@PathVariable UUID id, @Valid @RequestBody ContactMessage contactMessage) {
         if (!contactMessageRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
@@ -50,7 +51,7 @@ public class ContactMessageApiController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
         if (!contactMessageRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
