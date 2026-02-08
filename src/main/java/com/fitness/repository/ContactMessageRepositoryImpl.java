@@ -19,12 +19,13 @@ public class ContactMessageRepositoryImpl implements ContactMessageRepositoryCus
         if (message.getCreatedAt() == null) {
             message.setCreatedAt(LocalDateTime.now());
         }
-        String sql = "INSERT INTO contact_messages (name, email, phone, message, created_at) " +
-                     "VALUES (:name, :email, :phone, :message, :created_at) RETURNING id";
+        String sql = "INSERT INTO contact_messages (name, email, phone, telegram, message, created_at) " +
+                     "VALUES (:name, :email, :phone, :telegram, :message, :created_at) RETURNING id";
         Object id = entityManager.createNativeQuery(sql)
                 .setParameter("name", message.getName())
                 .setParameter("email", message.getEmail())
                 .setParameter("phone", message.getPhone())
+                .setParameter("telegram", message.getTelegram())
                 .setParameter("message", message.getMessage())
                 .setParameter("created_at", Timestamp.valueOf(message.getCreatedAt()))
                 .getSingleResult();
